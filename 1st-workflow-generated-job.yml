@@ -2,6 +2,3 @@ extractfile: Hello.java
 tarfile:
   class: File
   path: hello.tar
-src:
-  class: File
-  path: hello.tar
