@@ -1,29 +1,20 @@
 cwlVersion: "v1.0"
 inputs:
-- id: "tar-param.cwl_extractfile"
+- id: "extractfile"
   type:
     type: "STRING"
     nullable: false
-- id: "tar-param.cwl_tarfile"
-  type:
-    type: "FILE"
-    nullable: false
-- id: "arguments.cwl_src"
+- id: "tarfile"
   type:
     type: "FILE"
     nullable: false
 outputs:
-- id: "tar-param.cwl_example_out"
+- id: "classfile"
   type:
     type: "ANY"
-  outputBinding: "tar-param.cwl/tar-param.cwl_example_out"
-- id: "arguments.cwl_classfile"
-  type:
-    type: "ANY"
-  outputBinding: "arguments.cwl/arguments.cwl_classfile"
+  outputBinding: "arguments.cwl/classfile"
 hints: []
 requirements: []
-successCodes: []
 steps:
 - id: "tar-param.cwl"
   run:
@@ -53,10 +44,10 @@ steps:
   scatter: []
   scatterMethod: null
   in:
-  - extractfile: "tar-param.cwl_extractfile"
-    tarfile: "tar-param.cwl_tarfile"
+  - extractfile: "extractfile"
+    tarfile: "tarfile"
   out:
-  - example_out: "tar-param.cwl_example_out"
+  - example_out: "example_out"
   hints: []
   requirements: []
 - id: "arguments.cwl"
@@ -86,8 +77,8 @@ steps:
   scatter: []
   scatterMethod: null
   in:
-  - src: "arguments.cwl_src"
+  - src: "tar-param.cwl/example_out"
   out:
-  - classfile: "arguments.cwl_classfile"
+  - classfile: "classfile"
   hints: []
   requirements: []
