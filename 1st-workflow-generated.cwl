@@ -1,14 +1,16 @@
 cwlVersion: v1.0
 class: Workflow
 inputs:
-  extractfile: string
-  tarfile: File
-
+- id: tarfile
+  type: File
+- id: extractfile
+  type: string
 outputs:
-  classfile:
-    type: File
-    outputSource: arguments.cwl/classfile
-
+- id: classfile
+  type: File
+  outputSource: arguments.cwl/classfile
+hints: []
+requirements: []
 steps:
 - id: tar-param.cwl
   run:
@@ -27,15 +29,22 @@ steps:
       type: File
       outputBinding:
         glob: "$(inputs.extractfile)"
+    hints: []
+    requirements: []
     baseCommand:
     - tar
     - xf
-    class: CommandLineTool 
+    arguments: []
+    class: CommandLineTool
   in:
-  - extractfile: extractfile
-    tarfile: tarfile
+  - id: tarfile
+    source: tarfile
+  - id: extractfile
+    source: extractfile
   out:
-  - example_out: example_out
+  - id: example_out
+  hints: []
+  requirements: []
 - id: arguments.cwl
   run:
     cwlVersion: v1.0
@@ -52,6 +61,7 @@ steps:
     hints:
     - class: DockerRequirement
       dockerPull: java:7
+    requirements: []
     baseCommand: javac
     arguments:
     - "-d"
@@ -59,6 +69,10 @@ steps:
     label: Example trivial wrapper for Java 7 compiler
     class: CommandLineTool
   in:
-  - src: tar-param.cwl/example_out
+  - id: src
+    source: tar-param.cwl/example_out
   out:
-  - classfile: classfile
+  - id: classfile
+  hints: []
+  requirements: []
+
