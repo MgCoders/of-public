@@ -8,15 +8,7 @@ inputs:
   type:
     nullable: false
     type: "FILE"
-- id: "tar-param.cwl/example_out"
-  type:
-    nullable: false
-    type: "FILE"
 outputs:
-- id: "example_out"
-  type:
-    type: "ANY"
-  outputSource: "tar-param.cwl/example_out"
 - id: "classfile"
   type:
     type: "ANY"
