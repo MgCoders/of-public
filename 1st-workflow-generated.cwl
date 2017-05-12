@@ -8,13 +8,13 @@ inputs:
   type:
     type: FILE
     nullable: false
+
 outputs:
 - id: classfile
   type:
     type: ANY
   outputSource: arguments.cwl/classfile
-hints: []
-requirements: []
+
 steps:
 - id: tar-param.cwl
   run:
@@ -33,22 +33,15 @@ steps:
       type: File
       outputBinding:
         glob: "$(inputs.extractfile)"
-    hints: []
-    requirements: []
     baseCommand:
     - tar
     - xf
-    arguments: []
-    class: CommandLineTool
-  scatter: []
-  scatterMethod: 
+    class: CommandLineTool 
   in:
   - extractfile: extractfile
     tarfile: tarfile
   out:
   - example_out: example_out
-  hints: []
-  requirements: []
 - id: arguments.cwl
   run:
     cwlVersion: v1.0
@@ -65,19 +58,13 @@ steps:
     hints:
     - class: DockerRequirement
       dockerPull: java:7
-    requirements: []
     baseCommand: javac
     arguments:
     - "-d"
     - "$(runtime.outdir)"
     label: Example trivial wrapper for Java 7 compiler
     class: CommandLineTool
-  scatter: []
-  scatterMethod: 
   in:
   - src: tar-param.cwl/example_out
   out:
   - classfile: classfile
-  hints: []
-  requirements: []
-dataLinks: []
