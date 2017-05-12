@@ -15,7 +15,6 @@ outputs:
   outputSource: "arguments.cwl/classfile"
 hints: []
 requirements: []
-successCodes: []
 steps:
 - id: "tar-param.cwl"
   run:
@@ -36,7 +35,6 @@ steps:
         glob: "$(inputs.extractfile)"
     hints: []
     requirements: []
-    successCodes: []
     baseCommand:
     - "tar"
     - "xf"
@@ -68,7 +66,6 @@ steps:
     - class: "DockerRequirement"
       dockerPull: "java:7"
     requirements: []
-    successCodes: []
     baseCommand: "javac"
     arguments:
     - "-d"
