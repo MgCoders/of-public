@@ -1,4 +1,5 @@
 cwlVersion: "v1.0"
+class: Workflow
 inputs:
 - id: "extractfile"
   type:
