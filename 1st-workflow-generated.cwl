@@ -11,7 +11,7 @@ inputs:
 outputs:
 - id: "classfile"
   type:
-    type: "ANY"
+    type: "FILE"
   outputSource: "arguments.cwl/classfile"
 hints: []
 requirements: []
