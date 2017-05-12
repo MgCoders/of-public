@@ -1,0 +1,7 @@
+tar-param.cwl_extractfile: Hello.java
+tar-param.cwl_tarfile:
+  class: File
+  path: hello.tar
+arguments.cwl_src:
+  class: File
+  path: hello.tar
