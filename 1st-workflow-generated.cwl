@@ -1,84 +1,94 @@
-cwlVersion: "v1.0"
-class: Workflow
+cwlVersion: v1.0
 inputs:
-- id: "extractfile"
+- id: extractfile
   type:
+    type: STRING
     nullable: false
-    type: "STRING"
-- id: "tarfile"
+- id: tarfile
   type:
+    type: FILE
     nullable: false
-    type: "FILE"
+- id: tar-param.cwl/example_out
+  type:
+    type: FILE
+    nullable: false
 outputs:
-- id: "classfile"
+- id: example_out
   type:
-    type: "FILE"
-  outputSource: "arguments.cwl/classfile"
+    type: ANY
+  outputSource: tar-param.cwl/example_out
+- id: classfile
+  type:
+    type: ANY
+  outputSource: arguments.cwl/classfile
 hints: []
 requirements: []
+successCodes: []
 steps:
-- id: "tar-param.cwl"
+- id: tar-param.cwl
   run:
-    cwlVersion: "v1.0"
+    cwlVersion: v1.0
     inputs:
-    - id: "tarfile"
-      type: "File"
+    - id: tarfile
+      type: File
       inputBinding:
         position: 1
-    - id: "extractfile"
-      type: "string"
+    - id: extractfile
+      type: string
       inputBinding:
         position: 2
     outputs:
-    - id: "example_out"
-      type: "File"
+    - id: example_out
+      type: File
       outputBinding:
         glob: "$(inputs.extractfile)"
     hints: []
     requirements: []
+    successCodes: []
     baseCommand:
-    - "tar"
-    - "xf"
+    - tar
+    - xf
     arguments: []
-    class: "CommandLineTool"
+    class: CommandLineTool
   scatter: []
-  scatterMethod: null
+  scatterMethod: 
   in:
-  - extractfile: "extractfile"
-    tarfile: "tarfile"
+  - extractfile: extractfile
+    tarfile: tarfile
   out:
-  - example_out: "example_out"
+  - example_out: example_out
   hints: []
   requirements: []
-- id: "arguments.cwl"
+- id: arguments.cwl
   run:
-    cwlVersion: "v1.0"
+    cwlVersion: v1.0
     inputs:
-    - id: "src"
-      type: "File"
+    - id: src
+      type: File
       inputBinding:
         position: 1
     outputs:
-    - id: "classfile"
-      type: "File"
+    - id: classfile
+      type: File
       outputBinding:
         glob: "*.class"
     hints:
-    - class: "DockerRequirement"
-      dockerPull: "java:7"
+    - class: DockerRequirement
+      dockerPull: java:7
     requirements: []
-    baseCommand: "javac"
+    successCodes: []
+    baseCommand: javac
     arguments:
     - "-d"
     - "$(runtime.outdir)"
-    label: "Example trivial wrapper for Java 7 compiler"
-    class: "CommandLineTool"
+    label: Example trivial wrapper for Java 7 compiler
+    class: CommandLineTool
   scatter: []
-  scatterMethod: null
+  scatterMethod: 
   in:
-  - src: "tar-param.cwl/example_out"
+  - src: tar-param.cwl/example_out
   out:
-  - classfile: "classfile"
+  - classfile: classfile
   hints: []
   requirements: []
 dataLinks: []
