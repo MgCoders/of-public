@@ -1,19 +1,13 @@
 cwlVersion: v1.0
+class: Workflow
 inputs:
-- id: extractfile
-  type:
-    type: STRING
-    nullable: false
-- id: tarfile
-  type:
-    type: FILE
-    nullable: false
+  extractfile: string
+  tarfile: File
 
 outputs:
-- id: classfile
-  type:
-    type: ANY
-  outputSource: arguments.cwl/classfile
+  classfile:
+    type: File
+    outputSource: arguments.cwl/classfile
 
 steps:
 - id: tar-param.cwl
