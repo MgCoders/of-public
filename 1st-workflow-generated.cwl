@@ -8,13 +8,22 @@ inputs:
   type:
     nullable: false
     type: "FILE"
+- id: "tar-param.cwl/example_out"
+  type:
+    nullable: false
+    type: "FILE"
 outputs:
+- id: "example_out"
+  type:
+    type: "ANY"
+  outputSource: "tar-param.cwl/example_out"
 - id: "classfile"
   type:
     type: "ANY"
-  outputBinding: "arguments.cwl/classfile"
+  outputSource: "arguments.cwl/classfile"
 hints: []
 requirements: []
+successCodes: []
 steps:
 - id: "tar-param.cwl"
   run:
@@ -35,6 +44,7 @@ steps:
         glob: "$(inputs.extractfile)"
     hints: []
     requirements: []
+    successCodes: []
     baseCommand:
     - "tar"
     - "xf"
@@ -66,6 +76,7 @@ steps:
     - class: "DockerRequirement"
       dockerPull: "java:7"
     requirements: []
+    successCodes: []
     baseCommand: "javac"
     arguments:
     - "-d"
