@@ -2,12 +2,12 @@ cwlVersion: "v1.0"
 inputs:
 - id: "extractfile"
   type:
-    type: "STRING"
     nullable: false
+    type: "STRING"
 - id: "tarfile"
   type:
-    type: "FILE"
     nullable: false
+    type: "FILE"
 outputs:
 - id: "classfile"
   type:
@@ -35,7 +35,6 @@ steps:
         glob: "$(inputs.extractfile)"
     hints: []
     requirements: []
-    successCodes: []
     baseCommand:
     - "tar"
     - "xf"
@@ -67,7 +66,6 @@ steps:
     - class: "DockerRequirement"
       dockerPull: "java:7"
     requirements: []
-    successCodes: []
     baseCommand: "javac"
     arguments:
     - "-d"
@@ -82,3 +80,4 @@ steps:
   - classfile: "classfile"
   hints: []
   requirements: []
+dataLinks: []
