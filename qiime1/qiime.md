@@ -1,6 +1,6 @@
 # Qiime
 
-![Logo] (http://qiime.org/_static/wordpressheader.png)
+![Logo] (of-public/qiime1/logo.png)
  
 ## Scripts
  
