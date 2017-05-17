@@ -1,6 +1,6 @@
 # Qiime
 
-![Logo] (logo.png)
+![Logo](logo.png)
  
 ## Scripts
  
