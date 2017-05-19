@@ -1,0 +1,4 @@
+test_flag: true
+qiime_base_install_flag: false
+qiime_full_install_flag: false
+haiku_flag: false
