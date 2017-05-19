@@ -1,0 +1,8 @@
+version: '2'
+services:
+  qiime:
+    build: .
+    restart: always
+    volumes:
+     - "./data:/data/"
+    command: "/bin/bash -c source activate qiime1 ; print_qiime_config.py -t;"

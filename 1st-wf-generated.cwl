@@ -1,24 +1,29 @@
-cwlVersion: v1.0
-class: Workflow
+cwlVersion: "v1.0"
 inputs:
-- id: message
-  type: string
+- id: "message"
+  type: "string"
 outputs: []
+hints: []
+requirements: []
 steps:
-- id: 1st-tool.cwl
+- id: "1st-tool.cwl"
   run:
-    cwlVersion: v1.0
+    cwlVersion: "v1.0"
     inputs:
-    - id: message
-      type: string
+    - id: "message"
+      type: "string"
       inputBinding:
         position: 1
     outputs: []
-    baseCommand: echo
+    hints: []
+    requirements: []
+    baseCommand: "echo"
     arguments: []
-    class: CommandLineTool
+    class: "CommandLineTool"
   in:
-  - id: message
-    source: message
+  - id: "message"
+    source: "message"
   out: []
-
+  hints: []
+  requirements: []
+class: "Workflow"
