@@ -1,0 +1,3 @@
+sec_dir:
+  class: Directory
+  location: secuenciasfastq

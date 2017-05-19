@@ -1,5 +1,4 @@
 cwlVersion: "v1.0"
-class: Workflow
 inputs:
 - id: "tarfile"
   type: "File"
@@ -75,4 +74,4 @@ steps:
   - id: "classfile"
   hints: []
   requirements: []
-
+class: "Workflow"

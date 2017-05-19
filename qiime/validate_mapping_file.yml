@@ -1,0 +1,3 @@
+mapping:
+  class: File
+  path: mapping.txt
